@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>more+ | Premium Retail</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #fa4b16;
+            --secondary: #2D1E4E;
+            --obsidian: #0a0a0a;
+            --navbar-height: 110px;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #fff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        /* --- PERFECTLY CENTERED NAVBAR LAYOUT --- */
+        .navbar-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--navbar-height);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        /* 3-Column Flex System for Absolute Centering */
+        .logo-section { flex: 1; display: flex; align-items: center; height: 100%; }
+        .nav-links-section { flex: 1; display: flex; justify-content: center; align-items: center; height: 100%; }
+        .nav-right-section { flex: 1; display: flex; justify-content: flex-end; align-items: center; height: 100%; padding-right: 40px; }
+
+        /* Premium Logo Tab */
+        .logo-tab {
+            background: white;
+            width: 200px;
+            height: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-tab::after {
+            content: "";
+            position: absolute;
+            right: -30px;
+            top: 0;
+            width: 60px;
+            height: 100%;
+            background: white;
+            transform: skewX(-15deg);
+            z-index: -1;
+        }
+
+        .more-arc-logo {
+            background: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50% 50% 16% 16% / 100% 100% 32% 32%;
+            color: white;
+            transform: skewX(-7deg);
+        }
+
+        .more-arc-logo span {
+            font-size: 1.8rem;
+            font-weight: 900;
+            display: block;
+            transform: skewX(7deg);
+            letter-spacing: -1px;
+        }
+
+        /* --- NAVIGATION LINKS & DROPDOWNS --- */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            height: 100%;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative; /* Fixed anchor for dropdown */
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+            white-space: nowrap;
+            padding: 10px 0;
+        }
+
+        .nav-link:hover { color: var(--primary); }
+
+        /* MINIMAL PREMIUM DROPDOWN CARD */
+        .dropdown-card {
+            position: absolute;
+            top: calc(100% - 5px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            width: 420px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 3000;
+            border: 1px solid rgba(0,0,0,0.04);
+            pointer-events: none;
+        }
+
+        .nav-item:hover .dropdown-card {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .dropdown-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dropdown-tag {
+            text-transform: uppercase;
+            font-size: 0.65rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: 0.8px;
+        }
+
+        .dropdown-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.3rem;
+            line-height: 1.1;
+            color: var(--secondary);
+            font-weight: 900;
+        }
+
+        .view-all {
+            margin-top: 10px;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 800;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+
+        .view-all:hover { color: var(--primary); transform: translateX(4px); }
+
+        .dropdown-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-left: 1px solid #f0f0f0;
+            padding-left: 20px;
+        }
+
+        .list-label {
+            font-size: 0.6rem;
+            font-weight: 800;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .list-item:hover { transform: translateX(4px); }
+
+        .list-item img, .list-item i {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8;
+            font-size: 1.2rem;
+        }
+
+        .item-text { display: flex; flex-direction: column; line-height: 1.2; }
+        .item-name { font-weight: 700; font-size: 0.85rem; color: #333; }
+        .item-meta { font-size: 0.75rem; color: #aaa; }
+
+        /* --- RIGHT ACTIONS --- */
+        .orders-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Outfit', sans-serif;
+            text-transform: lowercase;
+        }
+
+        .orders-btn:hover { background: #000; transform: translateY(-2px); }
+
+        /* --- CONTENT & SECTIONS --- */
+        .main-content {
+            padding-top: var(--navbar-height);
+        }
+
+        .hero {
+            height: 80vh;
+            background: var(--obsidian);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 0 0 40px 40px;
+            margin: 0 10px;
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+
+        .hero-title {
+            position: relative;
+            z-index: 10;
+            color: white;
+            font-family: 'Fraunces', serif;
+            font-size: clamp(4rem, 12vw, 12rem);
+            font-weight: 900;
+            line-height: 0.8;
+            text-align: center;
+        }
+
+        .section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar-wrapper">
+        <!-- 1. Logo -->
+        <div class="logo-section">
+            <div class="logo-tab">
+                <div class="more-arc-logo">
+                    <span>more.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Centered Menu -->
+        <div class="nav-links-section">
+            <nav class="nav-links">
+                <!-- Cookbook -->
+                <div class="nav-item">
+                    <a href="#" class="nav-link">cookbook</a>
+                    <div class="dropdown-card">
+                        <div class="dropdown-grid">
+                            <div class="dropdown-info">
+                                <span class="dropdown-tag">Trending</span>
+                                <h4 class="dropdown-title">Kitchen Secrets</h4>
+                                <a href="#" class="view-all">view all <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                            <div class="dropdown-list">
+                                <span class="list-label">Popular</span>
+                                <div class="list-item">
+                                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100" alt="Salad">
+                                    <div class="item-text">
+                                        <span class="item-name">Green Detox</span>
+                                        <span class="item-meta">15 mins</span>
+                                    </div>
+                                </div>
+                                <div class="list-item">
+                                    <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=100" alt="Pasta">
+                                    <div class="item-text">
+                                        <span class="item-name">Spicy Penne</span>
+                                        <span class="item-meta">25 mins</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div class="nav-item">
+                    <a href="#" class="nav-link">about</a>
+                    <div class="dropdown-card">
+                        <div class="dropdown-grid">
+                            <div class="dropdown-info">
+                                <span class="dropdown-tag">Mission</span>
+                                <h4 class="dropdown-title">More Retail</h4>
+                                <a href="#" class="view-all">our story <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                            <div class="dropdown-list">
+                                <span class="list-label">Values</span>
+                                <div class="list-item">
+                                    <i class="fa-solid fa-leaf" style="color: #4CAF50;"></i>
+                                    <div class="item-text">
+                                        <span class="item-name">Freshness</span>
+                                        <span class="item-meta">Daily handpicked</span>
+                                    </div>
+                                </div>
+                                <div class="list-item">
+                                    <i class="fa-solid fa-store" style="color: #2196F3;"></i>
+                                    <div class="item-text">
+                                        <span class="item-name">900+ Stores</span>
+                                        <span class="item-meta">Across India</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partner -->
+                <div class="nav-item">
+                    <a href="#" class="nav-link">partner with us</a>
+                    <div class="dropdown-card">
+                        <div class="dropdown-grid">
+                            <div class="dropdown-info">
+                                <span class="dropdown-tag">Join Us</span>
+                                <h4 class="dropdown-title">Grow Together</h4>
+                                <a href="#" class="view-all">apply now <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                            <div class="dropdown-list">
+                                <span class="list-label">Business</span>
+                                <div class="list-item">
+                                    <i class="fa-solid fa-truck-fast" style="color: #FF9800;"></i>
+                                    <div class="item-text">
+                                        <span class="item-name">Logistics</span>
+                                        <span class="item-meta">Join our network</span>
+                                    </div>
+                                </div>
+                                <div class="list-item">
+                                    <i class="fa-solid fa-handshake" style="color: #9C27B0;"></i>
+                                    <div class="item-text">
+                                        <span class="item-name">Suppliers</span>
+                                        <span class="item-meta">Quality produce</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- 3. Actions -->
+        <div class="nav-right-section">
+            <button class="orders-btn">
+                <i class="fa-solid fa-receipt"></i>
+                <span>your orders</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1920" class="hero-image" alt="Grocery Store">
+            <h1 class="hero-title">your<br>supermarket</h1>
+        </section>
+
+        <section id="about" class="section">
+            <h2>more than retail</h2>
+            <p>Experience the freshest produce, curated staples, and a shopping experience that follows you. Our fixed navigation ensures you're always one click away from your favorites.</p>
+        </section>
+
+        <section id="partner" class="section" style="background: #fcfcfc; border-radius: 40px; margin-bottom: 50px;">
+            <h2>partner with us</h2>
+            <p>Join the fastest-growing retail network in India. We bring quality, convenience, and value to every neighborhood. Grow your business with our extensive logistics and supply chain.</p>
+        </section>
+    </main>
+
+</body>
+</html>
