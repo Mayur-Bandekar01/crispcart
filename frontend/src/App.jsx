@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ShoppingBag, MapPin, ArrowUpRight, LayoutGrid, Star, ArrowRight, ArrowLeft, Play, X } from 'lucide-react';
+import { Search, ShoppingBag, MapPin, ArrowUpRight, LayoutGrid, Star, ArrowRight, ArrowLeft, Play, X, Wallet } from 'lucide-react';
 const Instagram = () => <span>📸</span>;
 const Facebook = () => <span>📘</span>;
 const Linkedin = () => <span>🔗</span>;
@@ -23,7 +23,7 @@ const LoadingScreen = () => (
       className="logo-text-styled" 
       style={{ fontSize: '4rem' }}
     >
-      <span style={{ color: 'white' }}>more</span>
+      <span style={{ color: 'white' }}>Dmore</span>
     </motion.div>
   </motion.div>
 );
@@ -62,7 +62,7 @@ const Navbar = ({ onLoginClick, onLogoClick }) => {
       { title: "Our Values & Vision", img: "/images/freshness_bg.png", link: "#" }
     ],
     partner: [
-      { title: "Expand with More", img: "/images/customers.png", link: "#" },
+      { title: "Expand with Dmore", img: "/images/customers.png", link: "#" },
       { title: "Store Network Info", img: "/images/store_saltlake.png", link: "#" }
     ]
   };
@@ -72,7 +72,7 @@ const Navbar = ({ onLoginClick, onLogoClick }) => {
       {/* Left: Logo */}
       <div className="logo-section">
         <div className="more-arc-logo" onClick={onLogoClick} style={{ cursor: 'pointer' }}>
-          <span>more</span>
+          <span>Dmore</span>
         </div>
       </div>
 
@@ -101,6 +101,10 @@ const Navbar = ({ onLoginClick, onLogoClick }) => {
       </nav>
 
       <div className="actions-section">
+        <button className="connect-wallet-btn">
+          <Wallet size={20} />
+          <span>Connect Wallet</span>
+        </button>
         <button className="orders-btn" onClick={onLoginClick}>
           <ShoppingBag size={20} />
           <span>Orders</span>
@@ -153,10 +157,10 @@ const Hero = ({ onFindStore }) => {
         className="hero-content-main"
       >
         <h1 className="hero-title-main">
-          <span className="title-your">your</span>
+          <span className="title-your">your decentralized</span>
           <span className="title-supermarket">supermarket</span>
         </h1>
-        <p className="hero-subtitle-main">Get more of life with more</p>
+        <p className="hero-subtitle-main">Get more of life with Dmore</p>
         
         <div className="search-bar-glass">
           <Search size={28} color="rgba(255,255,255,0.7)" style={{ marginRight: '20px' }} />
@@ -170,7 +174,7 @@ const Hero = ({ onFindStore }) => {
         className="explore-card-float"
       >
         <span>explore</span>
-        <span>more+</span>
+        <span>Dmore+</span>
         <div className="explore-card-arrow">
           <ArrowRight size={20} />
         </div>
@@ -216,16 +220,16 @@ const MembershipSection = () => {
   return (
     <section className="membership-v2">
       <div className="membership-text-content">
-        <div className="membership-brand">more+</div>
+        <div className="membership-brand">Dmore+</div>
         <h2>the world's <span className="best-italic">best</span> <br/> grocery membership</h2>
         <p className="membership-benefit">
-          Earn 5% more+ points cashback^ on every order. <br/>
+          Earn 5% Dmore+ points cashback^ on every order. <br/>
           Redeem anytime you like. <br/>
-          <span>*more diamond</span>
+          <span>*Dmore diamond</span>
         </p>
         
         <button className="explore-membership-btn">
-          <span>Explore more+</span>
+          <span>Explore Dmore+</span>
           <ArrowRight size={24} strokeWidth={3} />
         </button>
       </div>
@@ -238,9 +242,9 @@ const MembershipSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="membership-card-3d"
         >
-          <div className="reference-diamond-card" aria-label="more+ diamond membership card">
+          <div className="reference-diamond-card" aria-label="Dmore+ diamond membership card">
             <div className="reference-card-top">
-              <span className="reference-card-logo">more+</span>
+              <span className="reference-card-logo">Dmore+</span>
               <span className="reference-card-name">TOMATO SHARMA</span>
               <span className="reference-card-valid">membership valid thru 31 Feb '26</span>
             </div>
@@ -260,7 +264,7 @@ const MembershipSection = () => {
           <div className="mini-membership-scene">
             <div className="mini-scene-light"></div>
             <div className="mini-scene-pedestal"></div>
-            <div className="mini-floating-card">more+</div>
+            <div className="mini-floating-card">Dmore+</div>
             <div className="mini-arc"></div>
             <div className="mini-play">
               <Play size={30} color="white" fill="white" />
@@ -274,13 +278,13 @@ const MembershipSection = () => {
 
 const BrandsSection = ({ brands = [] }) => {
   const defaultCollections = [
-    { brand: "more Selecta", logo: "/images/logos/selecta.png", category: "Premium Staples", class: "bg-selecta" },
-    { brand: "more Choice", logo: "/images/logos/choice.png", category: "Value Staples", class: "bg-choice" },
+    { brand: "Dmore Selecta", logo: "/images/logos/selecta.png", category: "Premium Staples", class: "bg-selecta" },
+    { brand: "Dmore Choice", logo: "/images/logos/choice.png", category: "Value Staples", class: "bg-choice" },
     { brand: "VOW 100%", logo: "/images/logos/vow.png", category: "Cleaning Essentials", class: "bg-vow" },
     { brand: "FEASTERS", logo: "/images/logos/feasters.png", category: "Fun Foods", class: "bg-feasters" },
     { brand: "PRARTHANA", logo: "/images/logos/prarthana.png", category: "Prayer Essentials", class: "bg-prarthana" },
     { brand: "Kitchen's Promise", logo: "/images/logos/kitchen.png", category: "Ready To Eat", class: "bg-kitchen" },
-    { brand: "more essentials", logo: "/images/logos/essentials.png", category: "Daily Needs", class: "bg-essentials" },
+    { brand: "Dmore essentials", logo: "/images/logos/essentials.png", category: "Daily Needs", class: "bg-essentials" },
   ];
   const collections = brands.length ? brands : defaultCollections;
 
@@ -384,19 +388,19 @@ const CustomerSection = ({ testimonials = [] }) => {
     {
       name: "Karan Sharma",
       avatar: "https://i.pravatar.cc/150?u=karan",
-      text: "I've had a great experience shopping at more. The supermarkets are always clean, well-organized, and fully stocked with everything from fresh fruits and vegetables to grocery essentials. Their staff is courteous and helpful, and checkout is usually quick and efficient. more has become my go-to place for all my shopping needs.",
+      text: "I've had a great experience shopping at Dmore. The supermarkets are always clean, well-organized, and fully stocked with everything from fresh fruits and vegetables to grocery essentials. Their staff is courteous and helpful, and checkout is usually quick and efficient. Dmore has become my go-to place for all my shopping needs.",
       rating: 5
     },
     {
       name: "Deepali Ghosh",
       avatar: "https://i.pravatar.cc/150?u=deepali",
-      text: "As a more+ diamond member, I can say that it is excellent! 5% more+ points cashback on all purchases adds real value. You get so many coupons, free subscriptions, and exclusive deals. To a frequent shopper like me, more with its more+ rewards membership is a great way to save more while getting premium perks.",
+      text: "As a Dmore+ diamond member, I can say that it is excellent! 5% Dmore+ points cashback on all purchases adds real value. You get so many coupons, free subscriptions, and exclusive deals. To a frequent shopper like me, Dmore with its Dmore+ rewards membership is a great way to save more while getting premium perks.",
       rating: 4
     },
     {
       name: "K Eesvari",
       avatar: "https://i.pravatar.cc/150?u=eesvari",
-      text: "The more app is a game-changer. It's easy to use, with a wide range of products and smooth checkout. I really like the slotted delivery option - it lets me choose a time that works for me, and deliveries are always on time. Managing my more+ points is quick and hassle-free. Great experience overall!",
+      text: "The Dmore app is a game-changer. It's easy to use, with a wide range of products and smooth checkout. I really like the slotted delivery option - it lets me choose a time that works for me, and deliveries are always on time. Managing my Dmore+ points is quick and hassle-free. Great experience overall!",
       rating: 5
     }
   ];
@@ -486,7 +490,7 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
         className="login-card-v2" onClick={e => e.stopPropagation()}
       >
         <div className="login-header-tab">
-          <div className="more-arc-logo small"><span>more</span></div>
+          <div className="more-arc-logo small"><span>Dmore</span></div>
         </div>
         <button className="login-close-btn" onClick={onClose}><X size={24} /></button>
 
@@ -494,7 +498,7 @@ const LoginModal = ({ onClose, onLoginSuccess }) => {
           <img src="/images/store_rajarhat.png" alt="Store" className="login-bg-img" />
           <div className="login-hero-overlay">
             <h2 className="login-title">your<br/>super-<br/>market</h2>
-            <p className="login-subtitle">Get more of life with more</p>
+            <p className="login-subtitle">Get more of life with Dmore</p>
           </div>
         </div>
 
@@ -573,11 +577,11 @@ const DashboardView = ({ onLogout }) => (
       </div>
       <div className="dashboard-menu-item">
         <div className="menu-icon-box purple"><Star size={20} color="#7C3AED" fill="#7C3AED" /></div>
-        <div className="menu-text"><h3>more+</h3><p>View points balance and month-wise transactions</p></div>
+        <div className="menu-text"><h3>Dmore+</h3><p>View points balance and month-wise transactions</p></div>
       </div>
       <div className="dashboard-menu-item">
         <div className="menu-icon-box green"><div className="wallet-icon-mini">₹</div></div>
-        <div className="menu-text"><h3>more wallet</h3><p>View more wallet transactions</p></div>
+        <div className="menu-text"><h3>Dmore wallet</h3><p>View Dmore wallet transactions</p></div>
       </div>
     </div>
     
@@ -591,12 +595,12 @@ const DashboardView = ({ onLogout }) => (
 const StoreLocator = () => {
   const [search, setSearch] = useState("");
   const stores = [
-    { name: "More Hypermart - Salt Lake", address: "Block GD, Sector III, Salt Lake City, Kolkata", phone: "+91 33 2335 1234" },
-    { name: "More Supermarket - Rajarhat", address: "Main Road, Chinar Park, Rajarhat, Kolkata", phone: "+91 33 4001 5678" },
-    { name: "More Hypermart - Garia", address: "NSC Bose Road, Garia, Kolkata", phone: "+91 33 2435 9012" },
-    { name: "More Supermarket - Jadavpur", address: "Raja SC Mullick Road, Jadavpur, Kolkata", phone: "+91 33 2414 3456" },
-    { name: "More Hypermart - Sarjapur", address: "Sarjapur Main Road, Bangalore", phone: "+91 80 4000 1122" },
-    { name: "More Supermarket - Koramangala", address: "80 Feet Road, Bangalore", phone: "+91 80 4000 3344" }
+    { name: "Dmore Hypermart - Salt Lake", address: "Block GD, Sector III, Salt Lake City, Kolkata", phone: "+91 33 2335 1234" },
+    { name: "Dmore Supermarket - Rajarhat", address: "Main Road, Chinar Park, Rajarhat, Kolkata", phone: "+91 33 4001 5678" },
+    { name: "Dmore Hypermart - Garia", address: "NSC Bose Road, Garia, Kolkata", phone: "+91 33 2435 9012" },
+    { name: "Dmore Supermarket - Jadavpur", address: "Raja SC Mullick Road, Jadavpur, Kolkata", phone: "+91 33 2414 3456" },
+    { name: "Dmore Hypermart - Sarjapur", address: "Sarjapur Main Road, Bangalore", phone: "+91 80 4000 1122" },
+    { name: "Dmore Supermarket - Koramangala", address: "80 Feet Road, Bangalore", phone: "+91 80 4000 3344" }
   ];
 
   const filteredStores = stores.filter(s => s.name.toLowerCase().includes(search.toLowerCase()) || s.address.toLowerCase().includes(search.toLowerCase()));
@@ -666,8 +670,8 @@ const Footer = ({ onLoginClick }) => {
         <div className="footer-grid">
           {/* Logo & Contact */}
           <div className="footer-col brand-col">
-            <div className="footer-logo">more</div>
-            <a href="mailto:hello@more.in" className="footer-email">hello@more.in</a>
+            <div className="footer-logo">Dmore</div>
+            <a href="mailto:hello@dmore.in" className="footer-email">hello@dmore.in</a>
             <div className="footer-socials">
               <div className="social-icon"><Instagram size={18} /></div>
               <div className="social-icon"><Facebook size={18} /></div>
@@ -723,7 +727,7 @@ const Footer = ({ onLoginClick }) => {
         </div>
 
         <div className="footer-bottom">
-          <p>more retail private limited © 2025</p>
+          <p>Dmore protocol limited © 2025</p>
           <div className="footer-tagline">your supermarket</div>
         </div>
       </div>

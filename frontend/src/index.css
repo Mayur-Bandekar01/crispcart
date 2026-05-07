@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Outfit:wght@400;700;900&family=Playfair+Display:ital,wght@1,700&display=swap');
 
 :root {
-  --primary: #fa4b16;      /* More Retail Orange */
-  --secondary: #2D1E4E;    /* more+ Membership Deep Violet */
+  --primary: #fa4b16;      /* Dmore Protocol Orange */
+  --secondary: #2D1E4E;    /* Dmore+ Membership Deep Violet */
   --text-dark: #1A1A1A;
   --text-light: #FFFFFF;
   --bg-light: #ffffff;
@@ -108,6 +108,7 @@ section {
   font-size: 1.8rem;
   font-weight: 900;
   letter-spacing: -1px;
+  text-shadow: 0 0 15px rgba(250, 75, 22, 0.4);
 }
 
 /* 2. Center: Floating Nav Links */
@@ -164,6 +165,31 @@ section {
 .orders-btn:hover {
   background: #000;
   transform: translateY(-2px);
+}
+
+.connect-wallet-btn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0 24px;
+  height: 56px;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.connect-wallet-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 /* Nav Item Centering Logic */
@@ -279,19 +305,20 @@ section {
 }
 
 .hero-title-main .title-your {
-  font-size: 4.5rem;
+  font-size: 2.8rem;
   font-weight: 800;
   display: block;
   line-height: 1;
-  margin-bottom: -10px;
+  margin-bottom: 0;
+  letter-spacing: -0.5px;
 }
 
 .hero-title-main .title-supermarket {
-  font-size: 8.2rem;
+  font-size: 7.5rem;
   font-weight: 900;
   display: block;
   line-height: 0.9;
-  letter-spacing: -3px;
+  letter-spacing: -2px;
 }
 
 .hero-subtitle-main {
